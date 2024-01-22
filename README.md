@@ -1,4 +1,4 @@
-# PyKernelOS (pkOS)
+1# PyKernelOS (pkOS)
 # os made by: 
 # niko: giggly.niko (on discord)
 # witheringaway: witheringaway (on discord)
@@ -34,6 +34,22 @@ awah wah there are cool apps like calculator lmao
 jk a really cool app is called ap3store.ap3
 IT WAS SUPEER HARD TO DO.
 really hard btw
+
+# ap3store.ap3
+so this is an app, i spent most of my time there
+you download ap3 apps from a server, if you want a custom server then do:
+1. download the ap3store.serverhostfiles
+2. in that hot package you have flask_app.py and ap3 folder!!!
+3. very hot but you need flask in order the server to run okay you got that? nice
+4. after that u need to write, in your terminal or cmd type "python flask_app.py"
+5. this will make a server in: http://127.0.0.1:5000/
+6. now you enter the folder ap3 in that website (hosted by you)
+7. and the result url would be either http://127.0.0.1:5000/ap3 or http://127.0.0.1:5000/
+8. you can use "http://127.0.0.1:5000/ap3" or "http://127.0.0.1:5000/" BOTH will be fine, but you use the /ap3 one if you have errors with just the /
+9. anyways now time to load it os enter your pkOS then u enter app ap3store.ap3 if you dont have that, get it simple.
+10. now u hae an option with servers. choose the third option "custom url"
+11. copy paste the url whne it asks you to and BAM!! you hosted your own crappy patty thingy server
+12. while the server we are hosted is hosted in python anywhere, you can use that too lmao!!!
 
 # SETTINGS??!!!!!!!
 yeah settings you can set them in the files/settings/settings.json folder, 
