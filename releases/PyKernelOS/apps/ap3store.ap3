@@ -1,0 +1,122 @@
+import os
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import time
+
+def get_apps_list(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+    # Find all links with href ending in '.ap3'
+    app_links = [link['href'] for link in soup.find_all('a', href=lambda x: x and x.endswith('.ap3'))]
+    
+    return app_links
+
+def download_file(url, destination_folder):
+    # Get the current directory of the script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    
+    # Go one level up to the parent directory and then into 'apps'
+    parent_directory = os.path.join(script_directory, os.pardir)
+    file_path = os.path.join(parent_directory, 'apps', url.split("/")[-1])
+
+    print(f"Attempting to download {url} to {file_path}")
+
+    # Download the file
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Check for errors in the HTTP response
+        with open(file_path, 'wb') as file:
+            file.write(response.content)
+
+        print(f"Downloaded {url.split('/')[-1]} to {file_path}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading {url}: {e}")
+
+def choose_server(server_options):
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("[ap3store.ap3]")
+        print("[server options]:")
+        for i, option in enumerate(server_options, start=1):
+            print(f"[ {i} ] - {option['name']}")
+
+        user_choice = input("[ap3store]: choose the server (q to quit): ")
+
+        if user_choice.lower() == 'q':
+            break
+
+        try:
+            index = int(user_choice) - 1
+            if 0 <= index < len(server_options):
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print("[ap3store]")
+                print(f"[server]: {server_options[index]['url']}")
+                return server_options[index]
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number or 'q' to quit.")
+
+def get_user_choice(options, prompt):
+    while True:
+        try:
+            user_input = input(prompt)
+            if user_input.lower() == 'q':
+                return 'q'
+            elif user_input.lower() == 'r':
+                return 'r'
+            
+            index = int(user_input) - 1
+            if 0 <= index < len(options):
+                return options[index]
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number, 'r' to refresh, or 'q' to quit.")
+
+if __name__ == "__main__":
+    server_options = [
+        {'name': 'url1 (hosted by niko and withering)', 'url':  'https://fdsafdsafdsa.pythonanywhere.com/ap3'},
+        {'name': 'localhost:8000 - url2 (you host the ap3 server on localhost.)', 'url': 'http://localhost:8000/ap3/'},
+        {'name': 'customURL - url3 (you enter the url u wanna read ap3 from)', 'url': ''}
+    ]
+
+    # Choose the server URL option
+    chosen_server_option = choose_server(server_options)
+
+    # If the chosen URL option is custom, prompt for the custom URL
+    if not chosen_server_option['url']:
+        chosen_server_option['url'] = input("Enter custom URL: ")
+
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        # Construct the URL with /ap3/
+        url_with_apps = urljoin(chosen_server_option['url'], 'ap3/')
+
+        # Fetch the list of apps from the URL
+        apps_to_download = get_apps_list(url_with_apps)
+
+        # Display the list of apps and options
+        print("[ap3store]")
+        print(f"server connected: {chosen_server_option['url']}")
+        print("[apps to download]:")
+        for i, app_url in enumerate(apps_to_download, start=1):
+          print(f"[ {i} ] - {app_url}")
+        print("[ r ] - refresh stock")  # Added option to refresh apps list
+        print("[ q ] - leave ap3store")  # Added option to refresh apps list
+
+        # Get user input for app download
+        user_choice = get_user_choice(apps_to_download, "[ap3store]: enter the number of the app to download: ")
+
+        # Check if the user wants to quit
+        if user_choice == 'q':
+            break
+        elif user_choice == 'r':  # Refresh apps list
+            continue
+
+        # Attempt to download the app
+        selected_app_url = urljoin(url_with_apps, user_choice)
+        download_file(selected_app_url, 'apps')  # Use 'apps' as the subdirectory
+        time.sleep(1)
