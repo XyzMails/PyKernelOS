@@ -6,7 +6,7 @@
 # libraries to install OwO
 you need python for pkOS, if you didnt know...
 command to install those libraries:
-pip install requests beautifulsoup4 Flask
+``pip install requests beautifulsoup4 Flask``
 
 flask for your own server hosting, it isnt required to run pkos but it is recomended.
 
