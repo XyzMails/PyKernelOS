@@ -3,7 +3,15 @@
 # niko: giggly.niko (on discord)
 # witheringaway: witheringaway (on discord)
 
-Description: so PyKernelOS is a (fake???) kernel type of os in python.
+# libraries to install OwO
+you need python for pkOS, if you didnt know...
+command to install those libraries:
+pip install requests beautifulsoup4 Flask
+
+flask for your own server hosting, it isnt required to run pkos but it is recomended.
+
+# Description: 
+so PyKernelOS is a (fake???) kernel type of os in python.
 thats all really need to say to get your hopes up, (or something else 🤨)
 so um, idk what to say about this os, its really just a fun project 
 
