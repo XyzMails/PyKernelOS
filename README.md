@@ -66,6 +66,7 @@ or you can go to bootloader and u have there settings :3
 
 # quotes from devs and other people :DD
 # Owner / main dev: "this bullshit hard to make i cant implement the fucking go support for apps AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" - niko
+# Owner / main dev: "dodgeball and volleyball so kewl i luv it " - niko again lol
 # Co-Owner / second dev: "i have no idea what im doing" - witheringaway
 # Co-Owner / second dev: "opensource gud" - witheringaway AGAIN
 # hater / 12 yo: "THIS NOT MADE IN C# AND C++ NIKO GO HANG YOURSELF YOU FAT NI-" - lordalpha
