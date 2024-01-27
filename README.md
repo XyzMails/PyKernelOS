@@ -47,7 +47,7 @@ really hard btw
 # ap3store.ap3
 so this is an app, i spent most of my time there
 you download ap3 apps from a server, if you want a custom server then do:
-1. download the ap3store.serverhostfiles
+1. download the pkOS.serverhostfiles
 2. in that hot package you have flask_app.py and ap3 folder!!!
 3. very hot but you need flask in order the server to run okay you got that? nice
 4. after that u need to write, in your terminal or cmd type "python flask_app.py"
