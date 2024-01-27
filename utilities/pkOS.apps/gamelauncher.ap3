@@ -89,7 +89,7 @@ if __name__ == "__main__":
         # Display the list of apps and options
         print("[gamelauncher.ap3]")
         print(f"server connected: {chosen_server_option['url']}")
-        print("[apps to download]:")
+        print("[games to play]:")
         for i, app_url in enumerate(apps_to_download, start=1):
             print(f"[ {i} ] - {app_url}")
         print("[ r ] - refresh stock")  # Added option to refresh apps list
