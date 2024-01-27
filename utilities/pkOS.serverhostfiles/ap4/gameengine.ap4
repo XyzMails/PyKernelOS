@@ -1,0 +1,117 @@
+import curses
+import time
+
+class TextBasedGame:
+    def __init__(self, player_symbol='[P]', empty_space='   ', wall='#'):
+        self.player_symbol = player_symbol
+        self.empty_space = empty_space
+        self.wall = wall
+        self.player_position = [1, 1]
+        self.maps = {
+            "testmap": [
+                "##########",
+                "#        #",
+                "#        #",
+                "#        #",
+                "#        #",
+                "#        #",
+                "#        #",
+                "##########",
+            ],
+            "map1": [
+                "##########",
+                "#        #",
+                "#  ####  #",
+                "#  ####  #",
+                "#        #",
+                "#        #",
+                "#        #",
+                "##########",
+            ]
+        }
+        self.current_map = None
+        self.gravity = True
+        self.jump_power = 5
+        self.jump_timer = 0
+
+    def display_map(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(0, 0, f"MAP: {self.current_map}")
+        for i, row in enumerate(self.maps[self.current_map], start=1):
+            for j, cell in enumerate(row):
+                if [i - 1, j] == self.player_position:
+                    stdscr.addstr(i, j * 3, self.player_symbol)
+                elif cell == '#':
+                    stdscr.addstr(i, j * 3, self.wall)
+                else:
+                    stdscr.addstr(i, j * 3, self.empty_space)
+
+    def move_player(self, key):
+        row, col = self.player_position
+
+        if key == curses.KEY_UP and row > 0 and self.maps[self.current_map][row - 1][col] != '#' and not self.is_hitting_ceiling():
+            self.player_position = [row - self.jump_power, col]
+        elif key == curses.KEY_DOWN and row < len(self.maps[self.current_map]) - 1 and self.maps[self.current_map][row + 1][col] != '#':
+            self.player_position = [row + 1, col]
+        elif key == curses.KEY_LEFT and col > 0 and self.maps[self.current_map][row][col - 1] != '#':
+            self.player_position = [row, col - 1]
+        elif key == curses.KEY_RIGHT and col < len(self.maps[self.current_map][0]) - 1 and self.maps[self.current_map][row][col + 1] != '#':
+            self.player_position = [row, col + 1]
+        elif key == curses.KEY_UP and self.gravity and not self.is_on_ground() and not self.is_hitting_ceiling():
+            self.jump_timer = self.jump_power
+
+    def is_on_ground(self):
+        row, col = self.player_position
+        return row == len(self.maps[self.current_map]) - 1 or self.maps[self.current_map][row + 1][col] == '#'
+
+    def is_hitting_ceiling(self):
+        row, col = self.player_position
+        return row > 0 and self.maps[self.current_map][row - 1][col] == '#'
+
+    def apply_gravity(self):
+        if self.jump_timer > 0:
+            self.jump_timer -= 1
+        elif not self.is_on_ground():
+            row, col = self.player_position
+            self.player_position = [row + 1, col]
+
+    def choose_map(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(0, 0, "[gameengine]: choose a map (1, 2)")
+        for i, map_name in enumerate(self.maps.keys(), start=1):
+            stdscr.addstr(i, 0, f"{i}. {map_name}")
+
+        while True:
+            key = stdscr.getch()
+            if ord('1') <= key <= ord('2'):
+                return list(self.maps.keys())[key - ord('1')]
+
+    def start_game(self, stdscr):
+        curses.curs_set(0)  # Hide the cursor
+
+        self.current_map = self.choose_map(stdscr)
+        stdscr.timeout(50)  # Set a timeout for getch() to allow continuous updates
+        while True:
+            self.display_map(stdscr)
+            stdscr.refresh()
+
+            key = stdscr.getch()
+
+            if key == ord('q'):
+                break
+            else:
+                self.move_player(key)
+                self.apply_gravity()
+                self.keep_player_within_bounds()
+
+    def keep_player_within_bounds(self):
+        row, col = self.player_position
+        max_row = len(self.maps[self.current_map]) - 1
+        max_col = len(self.maps[self.current_map][0]) - 1
+
+        # Ensure the player stays within the map boundaries
+        self.player_position[0] = max(0, min(row, max_row))
+        self.player_position[1] = max(0, min(col, max_col))
+
+if __name__ == "__main__":
+    curses.wrapper(TextBasedGame().start_game)
