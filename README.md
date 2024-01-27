@@ -60,6 +60,19 @@ you download ap3 apps from a server, if you want a custom server then do:
 11. copy paste the url whne it asks you to and BAM!! you hosted your own crappy patty thingy server
 12. while the server we are hosted is hosted in python anywhere, you can use that too lmao!!!
 
+# gamelauncher.ap3
+its a gamelauncher that launches game (code mainly) from the web!!!
+it was easy since i used the code for ap3store.ap3 so nice
+you can hvae ur own custom server too!!!
+1. download again pkOS.serverhostfiles (you should have that in utilities folder)
+2. u have flask_app.py and ap4 folder there (ap4 is games)
+3. and u just launch flask_app.py
+4. it hosts a site "http://127.0.0.1:5000/"
+5. u use "http://127.0.0.1:5000/ap4" for the games :3
+6. now u enter gamelauncher and u got serverchoose u choose: custom url
+7. enter the url "http://127.0.0.1:5000/ap4"
+8. and u got it
+
 # SETTINGS??!!!!!!!
 yeah settings you can set them in the files/settings/settings.json folder, 
 or you can go to bootloader and u have there settings :3
