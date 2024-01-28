@@ -7,7 +7,7 @@
 you need python for pkOS, if you didnt know...
 command to install those libraries:
 
-``pip install requests beautifulsoup4 Flask``
+``pip install requests beautifulsoup4 Flask colorama``
 
 flask for your own server hosting, it isnt required to run pkos but it is recomended.
 
@@ -15,6 +15,15 @@ flask for your own server hosting, it isnt required to run pkos but it is recome
 so PyKernelOS is a (fake???) kernel type of os in python.
 thats all really need to say to get your hopes up, (or something else 🤨)
 so um, idk what to say about this os, its really just a fun project 
+
+# TODO
+1. withering be nice and fill those out for me
+2. 2
+3. 3
+4. 4
+5. 5
+6. 6
+7. 
 
 # nice nice, what is the frickin bios.py and other shit like PyKernelOS.boot
 so ummmmmmmmmmmmmmmmm i forgor jk so theres uh some stuff like
@@ -43,6 +52,14 @@ awah wah there are cool apps like calculator lmao
 jk a really cool app is called ap3store.ap3
 IT WAS SUPEER HARD TO DO.
 really hard btw
+
+# webbrowser.ap3
+HOLY SHIT!!! WE DID A WEBBROWSER!???
+yeah we actually did it
+idkf how that works
+but yeah
+we did it
+you will get the deal of it when u launch it
 
 # ap3store.ap3
 so this is an app, i spent most of my time there
