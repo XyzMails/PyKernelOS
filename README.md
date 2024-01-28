@@ -17,13 +17,12 @@ thats all really need to say to get your hopes up, (or something else 🤨)
 so um, idk what to say about this os, its really just a fun project 
 
 # TODO
-1. withering be nice and fill those out for me
-2. 2
-3. 3
+1. app that downloads another apps (ap3store.ap3) - ✅
+2. app that runs games off the web (gamelauncher.ap3) - ✅
+3. A TEXTBASSED WEBBROWSER?!!!! (webbrowser.ap3) - ✅
 4. 4
 5. 5
 6. 6
-7. 
 
 # nice nice, what is the frickin bios.py and other shit like PyKernelOS.boot
 so ummmmmmmmmmmmmmmmm i forgor jk so theres uh some stuff like
