@@ -7,6 +7,7 @@ import requests
 import subprocess
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
+from colorama import Fore, Style
 
 class PyKernelOS:
     def __init__(self):
