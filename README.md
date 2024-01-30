@@ -20,7 +20,7 @@ so um, idk what to say about this os, its really just a fun project
 1. app that downloads another apps (ap3store.ap3) - ✅
 2. app that runs games off the web (gamelauncher.ap3) - ✅
 3. A TEXTBASSED WEBBROWSER?!!!! (webbrowser.ap3) - ✅
-4. 4
+4. get it on a real machine - WE ARE WORKINNG ON IT!!!!
 5. 5
 6. 6
 
