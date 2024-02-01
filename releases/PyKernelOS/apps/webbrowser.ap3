@@ -74,6 +74,19 @@ class TextWebBrowser:
         else:
             print("[webbrowser.ap3]: Error: Invalid element index.")
 
+    def download_file(self, url):
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                filename = os.path.join("files", "downloads", os.path.basename(url))
+                with open(filename, 'wb') as file:
+                    file.write(response.content)
+                print(f"[webbrowser.ap3]: File downloaded successfully: {filename}")
+            else:
+                print(f"[webbrowser.ap3]: Error: Unable to download file from {url}. Status code: {response.status_code}")
+        except requests.RequestException as e:
+            print(f"[webbrowser.ap3]: Error: {e}")
+
     def run_browser(self):
         os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
         self.set_web_page(self.home_url)  # Load the home website
@@ -92,6 +105,8 @@ class TextWebBrowser:
                 self.set_web_page(self.home_url)
             elif command[0] == "refresh":
                 self.set_web_page(self.current_url)
+            elif command[0] == "download" and len(command) == 2:
+                self.download_file(command[1])
             elif command[0] == "exit":
                 break
             else:
