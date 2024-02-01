@@ -110,7 +110,7 @@ class TextWebBrowser:
             elif command[0] == "exit":
                 break
             else:
-                print("[webbrowser.ap3]: Error: Invalid command. Try 'web', 'interact', 'home', 'refresh', or 'exit.'")
+                print("[webbrowser.ap3]: Error: Invalid command. Try 'web', 'interact', 'home', 'refresh', 'download', or 'exit.'")
 
 if __name__ == "__main__":
     browser = TextWebBrowser()
