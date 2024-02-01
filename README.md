@@ -18,8 +18,12 @@ so um, idk what to say about this os, its really just a fun project
 
 # NOTES
 01.02.24 - WOAH HOLY SHIT ITS ALREADY 3.19MB?!!!! WOW WTFF!!!!!!!!!!!!! - niko
+
 01.02.24 - withering i swear to gawd you know that u can edit readme.md u can add notes here lolz - niko
+
 01.02.24 - dude i forgor it was 2024 :skull: oh and the requirements are getting bigger and bigger with more apps. - niko
+
+01.02.24 - nahhh thas crazyyyyyyyy just wanted to say something but i forgor - niko
 
 
 # TODO
