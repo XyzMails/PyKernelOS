@@ -1,0 +1,117 @@
+import os
+import requests
+from bs4 import BeautifulSoup
+from colorama import Fore, Style
+
+class TextWebBrowser:
+    def __init__(self):
+        self.current_url = "https://fdsafdsafdsa.pythonanywhere.com/html/index.html"
+        self.page_content = ""
+        self.home_url = "https://fdsafdsafdsa.pythonanywhere.com/html/index.html"
+        self.user_agent = "webbrowser.ap3"
+
+    def set_web_page(self, url):
+        try:
+            headers = {"User-Agent": self.user_agent}
+            response = requests.get(url, headers=headers)
+            if response.status_code == 200:
+                self.current_url = url
+                self.page_content = response.text
+                os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
+
+                print(f"[webbrowser.ap3]: Successfully set web page to {url}")
+
+                # Display website information
+                soup = BeautifulSoup(self.page_content, 'html.parser')
+                website_title = soup.title.string if soup.title else "N/A"
+                date_of_creation = "N/A"  # You can fetch the actual date from the website if available
+                print(f"[webbrowser.ap3]:\n<website title: {website_title}>\n<date of creation: {date_of_creation}>\n")
+
+                self.display_page()
+            else:
+                print(f"[webbrowser.ap3]: Error: Unable to fetch content from {url}. Status code: {response.status_code}")
+        except requests.RequestException as e:
+            print(f"[webbrowser.ap3]: Error: {e}")
+
+    def display_page(self):
+        soup = BeautifulSoup(self.page_content, 'html.parser')
+        element_count = 0 
+        for idx, tag in enumerate(soup.find_all(["p", "a", "ul", "ol", "li", "button", "webap3_style1", "webap3_style2", "br"]), start=1):
+             if tag.name == "a":
+                element_count += 1  # Increment link count
+                print(Fore.YELLOW + f"|| [{element_count}][link] {tag.text}" + Style.RESET_ALL)
+             elif tag.name == "button":  # Corrected from "elseif" to "elif"
+                element_count += 1  # Increment link count
+                print(Fore.RED + f"|| [{element_count}][button] {tag.text}" + Style.RESET_ALL)
+             elif tag.name == "webap3_style1":  # Corrected from "elseif" to "elif"
+                print(Fore.GREEN + f"|| [webap3_style1] {tag.text}" + Style.RESET_ALL)
+             elif tag.name == "webap3_style2":  # Corrected from "elseif" to "elif"
+                print(Fore.CYAN + f"|| [webap3_style2] {tag.text}" + Style.RESET_ALL)
+             elif tag.name == "br":  # Corrected from "elseif" to "elif"
+                print("||")
+             else:
+                print(f"|| {tag.text}")
+
+    def interact_with_element(self, index):
+        soup = BeautifulSoup(self.page_content, 'html.parser')
+        elements = soup.find_all(["a", "button"])
+        if 1 <= index <= len(elements):
+            selected_element = elements[index - 1]
+            element_text = selected_element.text.strip()
+
+            if selected_element.name == "a":
+                print(f"[webbrowser.ap3]: Interacting with link: {element_text}")
+                link = selected_element.get('href')
+                if link:
+                    self.set_web_page(link)  # Update the current URL and load the new content
+                else:
+                    print("[webbrowser.ap3]: Error: Link does not have an 'href' attribute.")
+            elif selected_element.name == "button":
+                print(f"[webbrowser.ap3]: Interacting with button: {element_text}")
+                # Add your code to handle button interactions here
+                # For example, print a message or perform some action
+                print("[webbrowser.ap3]: This is a button. You can handle the interaction here.")
+        else:
+            print("[webbrowser.ap3]: Error: Invalid element index.")
+
+    def download_file(self, url):
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                filename = os.path.join("files", "downloads", os.path.basename(url))
+                with open(filename, 'wb') as file:
+                    file.write(response.content)
+                print(f"[webbrowser.ap3]: File downloaded successfully: {filename}")
+            else:
+                print(f"[webbrowser.ap3]: Error: Unable to download file from {url}. Status code: {response.status_code}")
+        except requests.RequestException as e:
+            print(f"[webbrowser.ap3]: Error: {e}")
+
+    def run_browser(self):
+        os.system('cls' if os.name == 'nt' else 'clear')  # Clear the screen
+        self.set_web_page(self.home_url)  # Load the home website
+
+        while True:
+            command = input("[webbrowser.ap3]: Enter command: ").lower().split()
+            if command[0] == "web" and len(command) == 2:
+                self.set_web_page(command[1])
+            elif command[0] == "interact" and len(command) == 2:
+                try:
+                    element_index = int(command[1])
+                    self.interact_with_element(element_index)
+                except ValueError:
+                    print("[webbrowser.ap3]: Error: Invalid index. Please provide a valid number.")
+            elif command[0] == "home":
+                self.set_web_page(self.home_url)
+            elif command[0] == "refresh":
+                self.set_web_page(self.current_url)
+            elif command[0] == "download" and len(command) == 2:
+                self.download_file(command[1])
+            elif command[0] == "exit":
+                break
+            else:
+                print("[webbrowser.ap3]: Error: Invalid command. Try 'web', 'interact', 'home', 'refresh', 'download', or 'exit.'")
+
+if __name__ == "__main__":
+    browser = TextWebBrowser()
+    browser.run_browser()

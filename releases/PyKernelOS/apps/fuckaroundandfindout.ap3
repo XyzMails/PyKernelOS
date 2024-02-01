@@ -1,0 +1,18 @@
+def intro():
+    while True:
+        print("fuck around and find out")
+        print("no peeks in the code!; dont look at the code for answer")
+        start = input("[fuckaroundandfindout]: start?> y/n: ")
+        if start.lower() == "y":
+            print("lets start")
+        elif start.lower() == "n":
+            break
+        else:
+            print("wrong output: " + start.lower())
+            print("use 'y' for yes or 'n' for no")
+
+def stuff():
+    print("")
+
+if __name__ == "__main__":
+    intro()

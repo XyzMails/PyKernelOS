@@ -1,0 +1,94 @@
+import os
+import pygame
+
+class MusicPlayer:
+    def __init__(self, music_folder="files/downloads"):
+        self.music_folder = music_folder
+        self.playlist = []
+        self.current_track = None
+
+        pygame.mixer.init(frequency=44100)  # Set the audio frequency explicitly
+
+    def load_playlist(self):
+        for file in os.listdir(self.music_folder):
+            if file.lower().endswith('.mp3'):
+                self.playlist.append(os.path.join(self.music_folder, file))
+
+    def display_playlist(self):
+        print("[musicplayer.ap3]\n[all songs]:")
+        for idx, track in enumerate(self.playlist, start=1):
+            print(f"[ {idx} ]: {os.path.basename(track)}")
+
+    def play_track(self, track_index):
+        if 0 <= track_index < len(self.playlist):
+            pygame.mixer.music.load(self.playlist[track_index])
+            pygame.mixer.music.play()
+            self.current_track = track_index
+        else:
+            print("Invalid track index.")
+
+    def stop_music(self):
+        pygame.mixer.music.stop()
+        self.current_track = None
+
+    def pause_music(self):
+        pygame.mixer.music.pause()
+
+    def resume_music(self):
+        pygame.mixer.music.unpause()
+
+    def get_playing_status(self):
+        return pygame.mixer.music.get_busy()
+
+    def clear_screen(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def display_commands(self):
+        print("[available commands]: - play, stop, pause, resume, exit")
+
+    def run_player(self):
+        self.load_playlist()
+
+        if not self.playlist:
+            print("No MP3 files found in the specified folder.")
+            return
+
+        while True:
+            self.clear_screen()
+            self.display_playlist()
+            self.display_commands()
+
+            if self.current_track is not None:
+                playing_status = self.get_playing_status()
+                print(f"\n[track]: {self.current_track + 1}")
+                print(f"[playing]: {os.path.basename(self.playlist[self.current_track])}")
+                print(f"[play]: {playing_status}")
+
+            user_input = input("[musicplayer.ap3]: choose a command - play, stop, pause, resume, exit: ").lower()
+
+            if user_input == 'exit':
+                self.stop_music()
+                break
+
+            elif user_input.startswith('play'):
+                try:
+                    track_index = int(user_input.split(' ')[-1]) - 1
+                    if 0 <= track_index < len(self.playlist):
+                        self.play_track(track_index)
+                    else:
+                        print("Invalid track index. Please choose a valid track.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+            elif user_input == 'stop':
+                self.stop_music()
+
+            elif user_input == 'pause':
+                self.pause_music()
+
+            elif user_input == 'resume':
+                self.resume_music()
+
+if __name__ == "__main__":
+    player = MusicPlayer()
+    player.run_player()
