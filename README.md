@@ -7,7 +7,7 @@
 you need python for pkOS, if you didnt know...
 command to install those libraries:
 
-``pip install requests beautifulsoup4 Flask colorama``
+``pip install requests beautifulsoup4 Flask colorama pygame``
 
 flask for your own server hosting, it isnt required to run pkos but it is recomended.
 
@@ -17,8 +17,9 @@ thats all really need to say to get your hopes up, (or something else 🤨)
 so um, idk what to say about this os, its really just a fun project 
 
 # NOTES
-01.02.23 - WOAH HOLY SHIT ITS ALREADY 3.19MB?!!!! WOW WTFF!!!!!!!!!!!!! - niko
-01.02.23 - withering i swear to gawd you know that u can edit readme.md u can add notes here lolz - witheringaway
+01.02.24 - WOAH HOLY SHIT ITS ALREADY 3.19MB?!!!! WOW WTFF!!!!!!!!!!!!! - niko
+01.02.24 - withering i swear to gawd you know that u can edit readme.md u can add notes here lolz - niko
+01.02.24 - dude i forgor it was 2024 :skull: oh and the requirements are getting bigger and bigger with more apps. - niko
 
 
 # TODO
