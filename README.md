@@ -16,13 +16,18 @@ so PyKernelOS is a (fake???) kernel type of os in python.
 thats all really need to say to get your hopes up, (or something else 🤨)
 so um, idk what to say about this os, its really just a fun project 
 
+# NOTES
+01.02.23 - WOAH HOLY SHIT ITS ALREADY 3.19MB?!!!! WOW WTFF!!!!!!!!!!!!! - niko
+01.02.23 - withering i swear to gawd you know that u can edit readme.md u can add notes here lolz - witheringaway
+
+
 # TODO
 1. app that downloads another apps (ap3store.ap3) - ✅
 2. app that runs games off the web (gamelauncher.ap3) - ✅
 3. A TEXTBASSED WEBBROWSER?!!!! (webbrowser.ap3) - ✅
 4. get it on a real machine - WE ARE WORKINNG ON IT!!!!
 5. fuck around and find out - 🗿
-6. 6
+6. music player??!!!!!!!! (musicplayer.ap3) - ✅
 
 # nice nice, what is the frickin bios.py and other shit like PyKernelOS.boot
 so ummmmmmmmmmmmmmmmm i forgor jk so theres uh some stuff like
