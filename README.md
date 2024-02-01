@@ -21,7 +21,7 @@ so um, idk what to say about this os, its really just a fun project
 2. app that runs games off the web (gamelauncher.ap3) - ✅
 3. A TEXTBASSED WEBBROWSER?!!!! (webbrowser.ap3) - ✅
 4. get it on a real machine - WE ARE WORKINNG ON IT!!!!
-5. 5
+5. fuck around and find out - 🗿
 6. 6
 
 # nice nice, what is the frickin bios.py and other shit like PyKernelOS.boot
