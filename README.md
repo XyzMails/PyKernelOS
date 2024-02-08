@@ -1,4 +1,5 @@
-# PyKernelOS (pkOS) beta
+# PyKernelOS (pkOS)
+pykernelos is done.
 # os made by: 
 # niko: giggly.niko (on discord)
 # witheringaway: witheringaway (on discord)
@@ -24,6 +25,8 @@ so um, idk what to say about this os, its really just a fun project
 01.02.24 - dude i forgor it was 2024 :skull: oh and the requirements are getting bigger and bigger with more apps. - niko
 
 01.02.24 - nahhh thas crazyyyyyyyy just wanted to say something but i forgor - niko
+
+08.02.24 - pkOS is done. there wont be any updates for new features.
 
 
 # TODO
